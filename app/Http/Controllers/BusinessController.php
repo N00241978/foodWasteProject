@@ -20,16 +20,15 @@ class BusinessController extends Controller
 
         // Fetch all business from the database
         if ($search) {
-            $business = Business::where('role', 'business')    // Finds by name
-                ->where('name', 'like', "%{$search}%")
+            $businesses = Business::where('name', 'like', "%{$search}%") // Finds by name
                 ->get();
         } else {
-            $business = Business::where('role', 'business')->get();  // Finds only the businesses
+            $businesses = Business::get();  // Finds only the businesses
         }
 
 
         // Send the businesses to the index view
-        return view('businesses.index', compact('businesses'));
+        return view('business.index', compact('businesses'));
     }
 
     /**

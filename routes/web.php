@@ -3,6 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SurplusListingController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,10 +27,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('user', 'UserController')->middleware('auth');
-Route::resource('business', 'BusinessController')->middleware('auth');
-Route::resource('donation', 'DonationController')->middleware('auth');
-Route::resource('order', 'OrderController')->middleware('auth');
-Route::resource('payment', 'PaymentController')->middleware('auth');
-Route::resource('review', 'ReviewController')->middleware('auth');
-Route::resource('surplusListing', 'SurplusListingController')->middleware('auth');
+Route::resource('user', UserController::class)->middleware('auth');
+Route::resource('business', BusinessController::class)->middleware('auth');
+Route::resource('donation', DonationController::class)->middleware('auth');
+Route::resource('order', OrderController::class)->middleware('auth');
+Route::resource('payment', PaymentController::class)->middleware('auth');
+Route::resource('review', ReviewController::class)->middleware('auth');
+Route::resource('surplusListing', SurplusListingController::class)->middleware('auth');
