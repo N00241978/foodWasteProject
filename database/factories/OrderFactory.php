@@ -15,8 +15,8 @@ class OrderFactory extends Factory
             ?? User::factory()->create(['role' => 'customer']);
 
 
-        $listing = SurplusListing::inRandomOrder()->first()
-            ?? SurplusListing::factory()->create();
+        $listing = surplus - listing::inRandomOrder()->first()
+            ?? surplus - listing::factory()->create();
 
         $quantity = $this->faker->numberBetween(1, 3);
 

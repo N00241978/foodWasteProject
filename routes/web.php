@@ -33,4 +33,4 @@ Route::resource('donation', DonationController::class)->middleware('auth');
 Route::resource('order', OrderController::class)->middleware('auth');
 Route::resource('payment', PaymentController::class)->middleware('auth');
 Route::resource('review', ReviewController::class)->middleware('auth');
-Route::resource('surplusListing', SurplusListingController::class)->middleware('auth');
+Route::resource('surplus-listing', SurplusListingController::class)->middleware('auth');

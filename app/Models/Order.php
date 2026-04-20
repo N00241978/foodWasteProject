@@ -15,10 +15,10 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function surplusListing()
+    public function surplus-listing()
     {
-        return $this->belongsTo(SurplusListing::class);
-        return $this->belongsTo(SurplusListing::class, 'listing_id');
+        return $this->belongsTo(surplus-listing::class);
+        return $this->belongsTo(surplus-listing::class, 'listing_id');
     }
 
     public function payment()

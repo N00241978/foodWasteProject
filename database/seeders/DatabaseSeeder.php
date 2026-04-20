@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             OrderSeeder::class,
             PaymentSeeder::class,
             ReviewSeeder::class,
-            SurplusListingSeeder::class,
+            surplus - listingSeeder::class,
         ]);
     }
 }

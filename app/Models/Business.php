@@ -15,9 +15,9 @@ class Business extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function surplusListings()
+    public function surplus-listings()
     {
-        return $this->hasMany(SurplusListing::class);
+        return $this->hasMany(surplus-listing::class);
     }
 
     public function reviews()

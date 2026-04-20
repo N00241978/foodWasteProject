@@ -17,15 +17,15 @@ class SurplusListingController extends Controller
 
         // Fetch all surplus listings from the database
         if ($search) {
-            $surplusListings = SurplusListing::where('name', 'like', "%{$search}%") // Finds by name
+            $surplus_listings = SurplusListing::where('name', 'like', "%{$search}%") // Finds by name
                 ->get();
         } else {
-            $surplusListings = SurplusListing::get();  // Finds only the surplus listings
+            $surplus_listings = SurplusListing::get();  // Finds only the surplus listings
         }
 
 
         // Send the surplus listings to the index view
-        return view('surplusListing.index', compact('surplusListings'));
+        return view('surplus-listing.index', compact('surplus_listings'));
     }
 
     /**
@@ -33,7 +33,7 @@ class SurplusListingController extends Controller
      */
     public function create()
     {
-        return view('surplusListing.create');
+        return view('surplus-listing.create');
     }
 
     /**
@@ -67,29 +67,29 @@ class SurplusListingController extends Controller
         ]);
 
         // Redirect to the index page with a success message
-        return to_route('surplusListing.index')->with('success', 'Surplus listing created successfully!');
+        return to_route('surplus-listing.index')->with('success', 'Surplus listing created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(SurplusListing $surplusListing)
+    public function show(SurplusListing $surplus_listing)
     {
-        return view('surplusListing.show', compact('surplusListing'));
+        return view('surplus-listing.show', compact('surplus_listing'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SurplusListing $surplusListing)
+    public function edit(SurplusListing $surplus_listing)
     {
-        return view('surplusListing.edit', compact('surplusListing'));
+        return view('surplus-listing.edit', compact('surplus_listing'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, SurplusListing $surplusListing)
+    public function update(Request $request, SurplusListing $surplus_listing)
     {
         // Validate input
         $request->validate([
@@ -104,7 +104,7 @@ class SurplusListingController extends Controller
         ]);
 
         // Update the surplus listing in the database
-        $surplusListing->update([
+        $surplus_listing->update([
             'title' => $request->title,
             'description' => $request->description,
             'original_price' => $request->original_price,
@@ -116,16 +116,16 @@ class SurplusListingController extends Controller
         ]);
 
         // Redirect to the index page with a success message
-        return to_route('surplusListing.index')->with('success', 'Surplus listing updated successfully!');
+        return to_route('surplus-listing.index')->with('success', 'Surplus listing updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(SurplusListing $surplusListing)
+    public function destroy(SurplusListing $surplus_listing)
     {
-        SurplusListing::where('id', $surplusListing->id)->delete();
+        SurplusListing::where('id', $surplus_listing->id)->delete();
 
-        return to_route('surplusListing.index')->with('success', 'Surplus listing was deleted successfully!');
+        return to_route('surplus-listing.index')->with('success', 'Surplus listing was deleted successfully!');
     }
 }

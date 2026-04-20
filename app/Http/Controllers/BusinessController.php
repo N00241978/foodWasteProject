@@ -79,12 +79,12 @@ class BusinessController extends Controller
     public function show(Business $business)
     {
         $users = $business->users;
-        $surplusListing = $business->surplusListing;
+        $surplus_listing = $business->surplus - listing;
         $review = $business->review;
         return view('businesses.show', compact(
             'users',
             'business',
-            'surplusListing',
+            'surplus-listing',
         ));
     }
 

@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Business;
 
-class SurplusListingFactory extends Factory
+class surplus-listingFactory extends Factory
 {
     public function definition(): array
     {

@@ -13,7 +13,7 @@
     <div class="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
             <div class="mb-6">
-                <a href="{{ route('surplus-listings.index') }}"
+                <a href="{{ route('surplus-listing.index') }}"
                     class="inline-flex items-center text-sm font-medium text-indigo-600 hover:text-indigo-700 transition">
                     ← Back to Listings
                 </a>
@@ -24,7 +24,7 @@
                     <div class="flex items-center gap-4 mb-8">
                         <div
                             class="w-14 h-14 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl font-bold shadow-sm">
-                            {{ strtoupper(substr($surplusListing->title, 0, 1)) }}
+                            {{ strtoupper(substr($surplus_listing->title, 0, 1)) }}
                         </div>
 
                         <div>
@@ -32,14 +32,14 @@
                                 Edit Listing
                             </h3>
                             <p class="mt-1 text-sm text-slate-600">
-                                {{ $surplusListing->title }}
+                                {{ $surplus_listing->title }}
                             </p>
                         </div>
                     </div>
 
                     <div class="border-t border-slate-100 pt-6">
-                        <x-surplusListing-form :action="route('surplus-listings.update', $surplusListing)"
-                            :method="'PUT'" :surplusListing="$surplusListing" />
+                        <x-surplus-listing-form :action="route('surplus-listing.update', $surplus_listing)"
+                            :method="'PUT'" :surplus-listing="$surplus_listing" />
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@
                 <p class="mt-2 text-slate-600">Browse available surplus items and their collection details.</p>
             </div>
 
-            @if ($surplusListings->isEmpty())
+            @if ($surplus_listings->isEmpty())
                 <div class="bg-white border border-slate-200 rounded-2xl shadow-sm p-10 text-center">
                     <h2 class="text-xl font-semibold text-slate-800">No listings available</h2>
                     <p class="mt-2 text-slate-500">There are currently no surplus listings to display.</p>
@@ -14,7 +14,7 @@
             @else
                 <!-- 3 COLUMN GRID -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    @foreach ($surplusListings as $surplusListing)
+                    @foreach ($surplus_listings as $surplus_listing)
                         <div
                             class="bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition overflow-hidden">
 
@@ -25,24 +25,24 @@
                                     <div class="flex items-center gap-3">
                                         <div
                                             class="w-14 h-14 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl font-bold">
-                                            {{ strtoupper(substr($surplusListing->title, 0, 1)) }}
+                                            {{ strtoupper(substr($surplus_listing->title, 0, 1)) }}
                                         </div>
 
                                         <h2 class="text-lg font-bold text-slate-900 leading-tight">
-                                            {{ $surplusListing->title }}
+                                            {{ $surplus_listing->title }}
                                         </h2>
                                     </div>
 
                                     <span
                                         class="text-xs font-semibold px-2 py-1 rounded-full
-                                                                                                                        {{ $surplusListing->status === 'available' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-700' }}">
-                                        {{ ucfirst($surplusListing->status) }}
+                                                                                                                                {{ $surplus_listing->status === 'available' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-700' }}">
+                                        {{ ucfirst($surplus_listing->status) }}
                                     </span>
                                 </div>
 
                                 <!-- Description -->
                                 <p class="text-sm text-slate-600 mb-4">
-                                    {{ $surplusListing->description }}
+                                    {{ $surplus_listing->description }}
                                 </p>
 
                                 <!-- Prices -->
@@ -50,14 +50,14 @@
                                     <div>
                                         <p class="text-xs text-slate-500">Original</p>
                                         <p class="text-sm line-through text-slate-400">
-                                            €{{ number_format($surplusListing->original_price, 2) }}
+                                            €{{ number_format($surplus_listing->original_price, 2) }}
                                         </p>
                                     </div>
 
                                     <div>
                                         <p class="text-xs text-slate-500">Now</p>
                                         <p class="text-lg font-bold text-indigo-600">
-                                            €{{ number_format($surplusListing->discounted_price, 2) }}
+                                            €{{ number_format($surplus_listing->discounted_price, 2) }}
                                         </p>
                                     </div>
                                 </div>
@@ -65,17 +65,17 @@
                                 <!-- Pickup -->
                                 <div class="text-xs text-slate-500 mb-4">
                                     <p><strong>Pickup:</strong></p>
-                                    <p>{{ $surplusListing->pickup_start }} → {{ $surplusListing->pickup_end }}</p>
+                                    <p>{{ $surplus_listing->pickup_start }} → {{ $surplus_listing->pickup_end }}</p>
                                 </div>
 
                                 <!-- Footer -->
                                 <div class="mt-auto flex justify-between items-center pt-4 border-t">
                                     <span class="text-sm font-semibold text-emerald-600">
                                         Save
-                                        €{{ number_format($surplusListing->original_price - $surplusListing->discounted_price, 2) }}
+                                        €{{ number_format($surplus_listing->original_price - $surplus_listing->discounted_price, 2) }}
                                     </span>
 
-                                    <a href="{{ route('surplusListing.show', $surplusListing->id) }}"
+                                    <a href="{{ route('surplus-listing.show', $surplus_listing->id) }}"
                                         class="bg-indigo-600 text-white text-sm px-3 py-1.5 rounded-lg hover:bg-indigo-700">
                                         View
                                     </a>
