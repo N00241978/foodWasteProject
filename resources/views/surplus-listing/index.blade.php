@@ -1,9 +1,21 @@
 <x-app-layout>
     <div class="min-h-screen bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-10">
-                <h1 class="text-3xl sm:text-4xl font-bold text-slate-900">Surplus Listings</h1>
-                <p class="mt-2 text-slate-600">Browse available surplus items and their collection details.</p>
+            <div class="flex justify-between">
+                <div class="mb-10">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-slate-900">Surplus Listings</h1>
+                    <p class="mt-2 text-slate-600">Browse available surplus items and their collection details.</p>
+                </div>
+                @auth
+                    @if(auth()->user()->role === 'admin')
+                        <div>
+                            <a href="{{ route('surplus-listing.create') }}"
+                                class="inline-flex items-center rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 transition">
+                                Create New Listing
+                            </a>
+                        </div>
+                    @endif
+                @endauth
             </div>
 
             @if ($surplus_listings->isEmpty())
@@ -36,7 +48,7 @@
 
                                         <span
                                             class="text-xs font-semibold px-2 py-1 rounded-full
-                                                                                                                                                                                            {{ $surplus_listing->status === 'available' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-700' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                            {{ $surplus_listing->status === 'available' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-700' }}">
                                             {{ ucfirst($surplus_listing->status) }}
                                         </span>
                                     </div>
