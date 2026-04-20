@@ -35,7 +35,7 @@
 
                                     <span
                                         class="text-xs font-semibold px-2 py-1 rounded-full
-                                                                                {{ $surplusListing->status === 'available' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-700' }}">
+                                                                                                                        {{ $surplusListing->status === 'available' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-700' }}">
                                         {{ ucfirst($surplusListing->status) }}
                                     </span>
                                 </div>
@@ -75,9 +75,10 @@
                                         €{{ number_format($surplusListing->original_price - $surplusListing->discounted_price, 2) }}
                                     </span>
 
-                                    <button class="bg-indigo-600 text-white text-sm px-3 py-1.5 rounded-lg hover:bg-indigo-700">
+                                    <a href="{{ route('surplusListing.show', $surplusListing->id) }}"
+                                        class="bg-indigo-600 text-white text-sm px-3 py-1.5 rounded-lg hover:bg-indigo-700">
                                         View
-                                    </button>
+                                    </a>
                                 </div>
 
                             </div>
