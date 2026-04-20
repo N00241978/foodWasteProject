@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SurplusListing;
+use App\Models\Business;
 use Illuminate\Http\Request;
 
 class SurplusListingController extends Controller
@@ -33,7 +34,10 @@ class SurplusListingController extends Controller
      */
     public function create()
     {
-        return view('surplus-listing.create');
+
+        $businesses = Business::all();
+
+        return view('surplus-listing.create', compact('businesses'));
     }
 
     /**
@@ -52,6 +56,8 @@ class SurplusListingController extends Controller
             'pickup_end' => 'required',
             'status' => 'required',
         ]);
+
+
 
         // Create a new surplus listing record in the database
         SurplusListing::create([

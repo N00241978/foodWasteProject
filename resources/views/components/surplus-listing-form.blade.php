@@ -1,7 +1,8 @@
 @props([
     'action',
     'method' => 'POST',
-    'surplus_listing' => null
+    'surplus_listing' => null,
+    'businesses' => []
 ])
 
 <form action="{{ $action }}" method="POST" class="space-y-6">
@@ -90,6 +91,28 @@
             </select>
 
             @error('status')
+                <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+
+        <div>
+            <label for="business_id" class="block text-sm font-medium text-slate-700 mb-2">
+                Business
+            </label>
+
+            <select name="business_id" id="business_id"
+                class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                <option value="">Select business</option>
+
+                @foreach ($businesses as $business)
+                    <option value="{{ $business->id }}"
+                        {{ old('business_id', $surplus_listing->business_id ?? '') == $business->id ? 'selected' : '' }}>
+                        {{ $business->name }}
+                    </option>
+                @endforeach
+            </select>
+
+            @error('business_id')
                 <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
             @enderror
         </div>
