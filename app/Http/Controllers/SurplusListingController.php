@@ -20,7 +20,7 @@ class SurplusListingController extends Controller
             $surplus_listings = SurplusListing::where('name', 'like', "%{$search}%") // Finds by name
                 ->get();
         } else {
-            $surplus_listings = SurplusListing::get();  // Finds only the surplus listings
+            $surplus_listings = SurplusListing::whereIn('status', ['available', 'reserved'])->get();  // Finds only the surplus listings
         }
 
 
@@ -83,6 +83,10 @@ class SurplusListingController extends Controller
      */
     public function edit(SurplusListing $surplus_listing)
     {
+        if (auth()->user()->role !== 'admin') {
+            abort(403);
+        }
+
         return view('surplus-listing.edit', compact('surplus_listing'));
     }
 
@@ -91,6 +95,11 @@ class SurplusListingController extends Controller
      */
     public function update(Request $request, SurplusListing $surplus_listing)
     {
+
+        if (auth()->user()->role !== 'admin') {
+            abort(403);
+        }
+
         // Validate input
         $request->validate([
             'title' => 'required',

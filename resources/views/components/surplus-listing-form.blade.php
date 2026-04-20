@@ -1,7 +1,7 @@
 @props([
     'action',
     'method' => 'POST',
-    'surplusListing' => null
+    'surplus_listing' => null
 ])
 
 <form action="{{ $action }}" method="POST" class="space-y-6">
@@ -16,7 +16,7 @@
             Title
         </label>
         <input type="text" name="title" id="title"
-            value="{{ old('title', $surplusListing->title ?? '') }}"
+            value="{{ old('title', $surplus_listing->title ?? '') }}"
             class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
 
         @error('title')
@@ -30,7 +30,7 @@
             Description
         </label>
         <textarea name="description" id="description" rows="4"
-            class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description', $surplusListing->description ?? '') }}</textarea>
+            class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">{{ old('description', $surplus_listing->description ?? '') }}</textarea>
 
         @error('description')
             <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
@@ -44,7 +44,7 @@
                 Original Price (€)
             </label>
             <input type="number" step="0.01" name="original_price" id="original_price"
-                value="{{ old('original_price', $surplusListing->original_price ?? '') }}"
+                value="{{ old('original_price', $surplus_listing->original_price ?? '') }}"
                 class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
 
             @error('original_price')
@@ -57,7 +57,7 @@
                 Discounted Price (€)
             </label>
             <input type="number" step="0.01" name="discounted_price" id="discounted_price"
-                value="{{ old('discounted_price', $surplusListing->discounted_price ?? '') }}"
+                value="{{ old('discounted_price', $surplus_listing->discounted_price ?? '') }}"
                 class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
 
             @error('discounted_price')
@@ -70,7 +70,7 @@
                 Quantity Available
             </label>
             <input type="number" name="quantity_available" id="quantity_available"
-                value="{{ old('quantity_available', $surplusListing->quantity_available ?? '') }}"
+                value="{{ old('quantity_available', $surplus_listing->quantity_available ?? '') }}"
                 class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
 
             @error('quantity_available')
@@ -85,8 +85,8 @@
             <select name="status" id="status"
                 class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                 <option value="">Select status</option>
-                <option value="available" {{ old('status', $surplusListing->status ?? '') == 'available' ? 'selected' : '' }}>Available</option>
-                <option value="unavailable" {{ old('status', $surplusListing->status ?? '') == 'unavailable' ? 'selected' : '' }}>Unavailable</option>
+                <option value="available" {{ old('status', $surplus_listing->status ?? '') == 'available' ? 'selected' : '' }}>Available</option>
+                <option value="unavailable" {{ old('status', $surplus_listing->status ?? '') == 'unavailable' ? 'selected' : '' }}>Unavailable</option>
             </select>
 
             @error('status')
@@ -102,7 +102,7 @@
                 Pickup Start
             </label>
             <input type="datetime-local" name="pickup_start" id="pickup_start"
-                value="{{ old('pickup_start', isset($surplusListing->pickup_start) ? \Carbon\Carbon::parse($surplusListing->pickup_start)->format('Y-m-d\TH:i') : '') }}"
+                value="{{ old('pickup_start', isset($surplus_listing->pickup_start) ? \Carbon\Carbon::parse($surplus_listing->pickup_start)->format('Y-m-d\TH:i') : '') }}"
                 class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
 
             @error('pickup_start')
@@ -115,7 +115,7 @@
                 Pickup End
             </label>
             <input type="datetime-local" name="pickup_end" id="pickup_end"
-                value="{{ old('pickup_end', isset($surplusListing->pickup_end) ? \Carbon\Carbon::parse($surplusListing->pickup_end)->format('Y-m-d\TH:i') : '') }}"
+                value="{{ old('pickup_end', isset($surplus_listing->pickup_end) ? \Carbon\Carbon::parse($surplus_listing->pickup_end)->format('Y-m-d\TH:i') : '') }}"
                 class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
 
             @error('pickup_end')
