@@ -10,7 +10,7 @@ class SurplusListingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($request)
+    public function index(Request $request)
     {
         // Get the search input
         $search = $request->input('search');
@@ -25,7 +25,7 @@ class SurplusListingController extends Controller
 
 
         // Send the surplus listings to the index view
-        return view('surplus.index', compact('surplusListings'));
+        return view('surplusListing.index', compact('surplusListings'));
     }
 
     /**
