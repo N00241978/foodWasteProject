@@ -107,7 +107,7 @@
                 @foreach ($businesses as $business)
                     <option value="{{ $business->id }}"
                         {{ old('business_id', $surplus_listing->business_id ?? '') == $business->id ? 'selected' : '' }}>
-                        {{ $business->name }}
+                        {{ $business->business_name }}
                     </option>
                 @endforeach
             </select>

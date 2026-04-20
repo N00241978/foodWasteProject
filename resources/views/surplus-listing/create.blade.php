@@ -11,8 +11,8 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg mb-4">Add a New Surplus Listing</h3>
 
-                    <x-surplus-listing-form :action="route('surplus-listing.store')" :method="'POST'" />
-
+                    <x-surplus-listing-form :action="route('surplus-listing.store')" :method="'POST'"
+                        :businesses="$businesses" />
                 </div>
             </div>
         </div>

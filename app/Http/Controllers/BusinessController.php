@@ -36,6 +36,8 @@ class BusinessController extends Controller
      */
     public function create()
     {
+        $businesses = Business::all();
+
         return view('business.create');
     }
 
@@ -93,6 +95,8 @@ class BusinessController extends Controller
      */
     public function edit(Business $business)
     {
+        $businesses = Business::all();
+
         return view('businesses.edit')->with('business', $business);
     }
 

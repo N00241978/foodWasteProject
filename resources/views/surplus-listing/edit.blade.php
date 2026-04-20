@@ -39,7 +39,7 @@
 
                     <div class="border-t border-slate-100 pt-6">
                         <x-surplus-listing-form :action="route('surplus-listing.update', $surplus_listing)"
-                            :method="'PUT'" :surplus_listing="$surplus_listing" />
+                            :method="'PUT'" :surplus_listing="$surplus_listing" :businesses="$businesses" />
                     </div>
                 </div>
             </div>
