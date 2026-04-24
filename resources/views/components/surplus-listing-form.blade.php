@@ -5,7 +5,7 @@
     'businesses' => []
 ])
 
-<form action="{{ $action }}" method="POST" class="space-y-6">
+<form action="{{ $action }}" method="POST" enctype="multipart/form-data" class="space-y-6">
     @csrf
     @if($method !== 'POST')
         @method($method)
@@ -111,6 +111,19 @@
                     </option>
                 @endforeach
             </select>
+
+            <div>
+                <label for="image" class="block text-sm font-medium text-slate-700 mb-2">
+                    Image
+                </label>
+
+                <input type="file" name="image" id="image"
+                    class="w-full rounded-xl border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+
+                @error('image')
+                    <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
 
             @error('business_id')
                 <p class="text-sm text-red-600 mt-1">{{ $message }}</p>

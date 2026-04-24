@@ -55,9 +55,14 @@ class SurplusListingController extends Controller
             'pickup_start' => 'required',
             'pickup_end' => 'required',
             'status' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
+        $imagePath = null;
 
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('surplus_listings', 'public');
+        }
 
         // Create a new surplus listing record in the database
         SurplusListing::create([
@@ -69,6 +74,7 @@ class SurplusListingController extends Controller
             'pickup_start' => $request->pickup_start,
             'pickup_end' => $request->pickup_end,
             'status' => $request->status,
+            'image' => $imagePath,
 
         ]);
 
@@ -116,7 +122,19 @@ class SurplusListingController extends Controller
             'pickup_start' => 'required',
             'pickup_end' => 'required',
             'status' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
+
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('surplus_listings', 'public');
+        }
+
+        if ($imagePath) {
+            // Delete the old image if a new one was uploaded
+            Storage::disk('public')->delete($surplus_listing->image);
+        }
 
         // Update the surplus listing in the database
         $surplus_listing->update([
@@ -128,6 +146,7 @@ class SurplusListingController extends Controller
             'pickup_start' => $request->pickup_start,
             'pickup_end' => $request->pickup_end,
             'status' => $request->status,
+            'image' => $imagePath,
         ]);
 
         // Redirect to the index page with a success message

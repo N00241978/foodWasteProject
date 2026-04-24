@@ -29,4 +29,16 @@ class Business extends Model
     {
         return $this->belongsToMany(User::class, 'favourites');
     }
+
+    protected $fillable = [
+        'business_name',
+        'business_type',
+        'address',
+        'city',
+        'eircode',
+        'email',
+        'description',
+        'opening_hours',
+        'image',
+    ];
 }

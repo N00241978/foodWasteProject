@@ -56,7 +56,14 @@ class BusinessController extends Controller
             'email' => 'required',
             'description' => 'required',
             'opening_hours' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
+
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('businesses', 'public');
+        }
 
         // Create a new business record in the database
         Business::create([
@@ -68,6 +75,7 @@ class BusinessController extends Controller
             'email' => $request->email,
             'description' => $request->description,
             'opening_hours' => $request->opening_hours,
+            'image' => $imagePath,
 
         ]);
 
@@ -81,12 +89,12 @@ class BusinessController extends Controller
     public function show(Business $business)
     {
         $users = $business->users;
-        $surplus_listing = $business->surplus - listing;
+        $surplus_listing = $business->surplus_listing;
         $review = $business->review;
         return view('businesses.show', compact(
             'users',
             'business',
-            'surplus-listing',
+            'surplus_listing',
         ));
     }
 
@@ -115,7 +123,14 @@ class BusinessController extends Controller
             'email' => 'required',
             'description' => 'required',
             'opening_hours' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
+
+        $imagePath = $business->image;
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('businesses', 'public');
+        }
 
         // Create a record in the database
         $business->update([
@@ -127,6 +142,7 @@ class BusinessController extends Controller
             'email' => $request->email,
             'description' => $request->description,
             'opening_hours' => $request->opening_hours,
+            'image' => $imagePath,
         ]);
 
         // Redirect to the index page with a success message

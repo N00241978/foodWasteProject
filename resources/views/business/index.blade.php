@@ -18,6 +18,10 @@
                         </div>
                         <div class="flex flex-col gap-5 mt-5">
                             <h1 class="text-4xl font-extrabold text-gray-800">{{ $business->business_name }}</h1>
+                            @if($business->image)
+                                <img src="{{ asset('storage/' . $business->image) }}"
+                                    class="w-full h-64 object-cover rounded-2xl">
+                            @endif
                             <p class="mt-2 text-lg text-gray-600"><strong>Business Name:</strong>
                                 {{ $business->business_name }}</p>
                             <p class="mt-1 text-lg text-gray-600"><strong>Business Type:</strong>

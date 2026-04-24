@@ -43,11 +43,16 @@
                                         <h2 class="text-lg font-bold text-slate-900 leading-tight">
                                             {{ $surplus_listing->title }}
                                         </h2>
+
+                                        @if($surplus_listing->image)
+                                            <img src="{{ asset('storage/' . $surplus_listing->image) }}"
+                                                class="w-full h-64 object-cover rounded-2xl">
+                                        @endif
                                     </div>
 
                                     <span
                                         class="text-xs font-semibold px-2 py-1 rounded-full
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    {{ $surplus_listing->status === 'available' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-700' }}">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {{ $surplus_listing->status === 'available' ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-700' }}">
                                         {{ ucfirst($surplus_listing->status) }}
                                     </span>
                                 </div>

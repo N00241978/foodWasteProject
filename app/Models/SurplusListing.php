@@ -30,5 +30,6 @@ class SurplusListing extends Model
         'pickup_start',
         'pickup_end',
         'status',
+        'image',
     ];
 }
