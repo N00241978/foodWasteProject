@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->datetime('pickup_start');
             $table->datetime('pickup_end');
             $table->string('status');
+            $table->string('image')->nullable();
 
             $table->timestamps();
         });

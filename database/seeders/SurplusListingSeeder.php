@@ -9,6 +9,6 @@ class SurplusListingSeeder extends Seeder
 {
     public function run(): void
     {
-        surplus - listing::factory(100)->create();
+        SurplusListing::factory(100)->create();
     }
 }

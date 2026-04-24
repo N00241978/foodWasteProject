@@ -25,6 +25,8 @@ return new class extends Migration {
             $table->string('description')->nullable();
             $table->string('opening_hours')->nullable();
 
+            $table->string('image')->nullable();
+
             $table->boolean('verified')->default(false);
 
             $table->timestamps();
