@@ -34,10 +34,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             BusinessSeeder::class,
-            DonationSeeder::class,
-            OrderSeeder::class,
-            PaymentSeeder::class,
-            ReviewSeeder::class,
+                // DonationSeeder::class,
+                // CartSeeder::class,
+                // PaymentSeeder::class,
+                // ReviewSeeder::class,
             SurplusListingSeeder::class,
         ]);
     }

@@ -116,13 +116,10 @@
                                 @endif
                             @endauth
 
-                            <form action="{{ route('surplus-listing.reserve', $surplus_listing) }}" method="POST">
-                                @csrf
-                                <button type="submit"
-                                    class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 transition">
-                                    Reserve Item
-                                </button>
-                            </form>
+                            <a href="#"
+                                class="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 transition">
+                                Reserve Item
+                            </a>
                         </div>
                     </div>
 

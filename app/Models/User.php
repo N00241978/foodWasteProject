@@ -18,9 +18,14 @@ class User extends Authenticatable
         return $this->hasOne(Business::class);
     }
 
-    public function orders()
+    public function carts()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Cart::class);
+    }
+
+    public function active_cart()
+    {
+        return $this->hasOne(Cart::class)->where('status', 'active');
     }
 
     public function donations()

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Business;
+use File;
 
 class SurplusListingFactory extends Factory
 {
@@ -17,6 +18,8 @@ class SurplusListingFactory extends Factory
 
         $pickupStart = now()->addHours($this->faker->numberBetween(1, 6));
         $pickupEnd = (clone $pickupStart)->addHours($this->faker->numberBetween(1, 3));
+
+        $image = $this->faker->randomElement(File::files(public_path('images/surplus-listings')))->getFilename();
 
         return [
             'business_id' => $business->id,
@@ -52,6 +55,8 @@ class SurplusListingFactory extends Factory
                 'reserved',
                 'collected',
             ]),
+
+            'image' => $image,
         ];
     }
 }

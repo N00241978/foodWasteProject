@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\SurplusListing;
 
 class Business extends Model
 {
@@ -15,9 +16,9 @@ class Business extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function surplus_listings()
+    public function surplusListings()
     {
-        return $this->hasMany(SurplusListing::class);
+        return $this->hasMany(SurplusListing::class, 'business_id');
     }
 
     public function reviews()

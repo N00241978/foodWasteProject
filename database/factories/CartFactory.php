@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
 use App\Models\SurplusListing;
 
-class OrderFactory extends Factory
+class CartFactory extends Factory
 {
     public function definition(): array
     {

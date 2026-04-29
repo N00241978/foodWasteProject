@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+use App\Models\SurplusListing;
+
+class Cart extends Model
 {
     /** @use HasFactory<\Database\Factories\OrderFactory> */
     use HasFactory;
@@ -15,14 +17,13 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function surpluslisting()
+    public function surplusListings()
     {
-        return $this->belongsTo(SurplusListing::class);
-        return $this->belongsTo(SurplusListing::class, 'listing_id');
+        return $this->hasMany(SurplusListing::class);
     }
 
-    public function payment()
-    {
-        return $this->hasOne(Payment::class);
-    }
+    protected $fillable = [
+        'user_id',
+        'status',
+    ];
 }

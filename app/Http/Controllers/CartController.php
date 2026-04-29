@@ -4,15 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\SurplusListing;
 use App\Models\Business;
-use App\Models\Cart;
-
-use Storage;
-
 use Illuminate\Http\Request;
 
-
-
-class SurplusListingController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -168,19 +162,5 @@ class SurplusListingController extends Controller
         SurplusListing::where('id', $surplus_listing->id)->delete();
 
         return to_route('surplus-listing.index')->with('success', 'Surplus listing was deleted successfully!');
-    }
-
-    public function addToCart(SurplusListing $surplus_listing)
-    {
-        $cart = auth()->user()->active_cart;
-
-        if (!$cart) {
-            $cart = Cart::create(['user_id' => auth()->id()]);
-        }
-
-        $cart->surplusListings()->save($surplus_listing);
-
-
-        return to_route('surplus-listing.index')->with('success', 'Surplus listing added to cart successfully!');
     }
 }

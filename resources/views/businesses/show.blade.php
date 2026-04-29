@@ -87,6 +87,68 @@
                         </div>
                     </div>
 
+                    <div class="border-t border-slate-200 pt-8 mb-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-900">
+                                    Surplus Listings
+                                </h2>
+                                <p class="mt-1 text-sm text-slate-500">
+                                    Items currently available from {{ $business->business_name }}.
+                                </p>
+                            </div>
+                        </div>
+
+                        @if($business->surplusListings->count())
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                @foreach($business->surplusListings as $listing)
+                                    <div class="rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden">
+
+                                        @if($listing->image)
+                                            <img src="{{ asset('images/surplus-listings/' . $listing->image) }}"
+                                                alt="{{ $listing->title }}" class="w-full h-48 object-cover">
+                                        @else
+                                            <div class="w-full h-48 bg-slate-200 flex items-center justify-center text-slate-500">
+                                                No Image Available
+                                            </div>
+                                        @endif
+
+                                        <div class="p-5">
+                                            <h3 class="text-xl font-bold text-slate-900">
+                                                {{ $listing->title }}
+                                            </h3>
+
+                                            <p class="mt-2 text-sm text-slate-600">
+                                                {{ $listing->description }}
+                                            </p>
+
+                                            <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
+                                                <p class="text-slate-600">
+                                                    <strong>Quantity:</strong> {{ $listing->quantity }}
+                                                </p>
+
+                                                <p class="text-slate-600">
+                                                    <strong>Price:</strong> €{{ $listing->price }}
+                                                </p>
+                                            </div>
+
+                                            <a href="{{ route('surplus-listing.show', $listing) }}"
+                                                class="mt-5 inline-flex items-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 transition">
+                                                View Listing
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-6 text-center">
+                                <p class="text-slate-500">
+                                    This business has no surplus listings yet.
+                                </p>
+                            </div>
+                        @endif
+                    </div>
+
                     <div
                         class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>

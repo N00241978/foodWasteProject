@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
 
             $table->foreignId('business_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cart_id')->nullable()->constrained()->nullOnDelete();
 
             $table->string('title');
             $table->string('description');

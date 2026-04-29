@@ -91,6 +91,9 @@ class BusinessController extends Controller
         $users = $business->users;
         $surplus_listing = $business->surplus_listing;
         $review = $business->review;
+
+        $business->surplus_listings;
+
         return view('businesses.show', compact(
             'users',
             'business',
