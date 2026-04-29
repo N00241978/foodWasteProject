@@ -10,23 +10,29 @@
             </div>
 
             <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+
+                {{-- IMAGE AT TOP --}}
+                @if($business->image)
+                    <img src="{{ asset('images/businesses/' . $business->image) }}" alt="{{ $business->business_name }}"
+                        class="w-full h-72 object-cover">
+                @else
+                    <div
+                        class="w-full h-72 bg-slate-200 flex items-center justify-center text-slate-500 text-lg font-medium">
+                        No Image Available
+                    </div>
+                @endif
+
                 <div class="p-6 sm:p-8 lg:p-10">
 
                     <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
-                        <div class="flex items-center gap-4">
-                            <div
-                                class="w-20 h-20 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-3xl font-bold shadow-sm">
-                                {{ strtoupper(substr($business->business_name, 0, 1)) }}
-                            </div>
+                        <div>
+                            <h1 class="text-3xl font-bold text-slate-900">
+                                {{ $business->business_name }}
+                            </h1>
 
-                            <div>
-                                <h1 class="text-3xl font-bold text-slate-900">
-                                    {{ $business->business_name }}
-                                </h1>
-                                <p class="mt-2 text-slate-600">
-                                    {{ $business->description }}
-                                </p>
-                            </div>
+                            <p class="mt-3 text-slate-600 leading-relaxed">
+                                {{ $business->description }}
+                            </p>
                         </div>
 
                         <div>

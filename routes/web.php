@@ -27,7 +27,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('business', BusinessController::class)->middleware('auth');
 Route::resource('donation', DonationController::class)->middleware('auth');
 Route::resource('order', OrderController::class)->middleware('auth');

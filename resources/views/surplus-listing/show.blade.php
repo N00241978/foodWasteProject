@@ -97,6 +97,11 @@
                                 Back
                             </a>
 
+                            <a href="{{ route('business.show', $surplus_listing->business_id) }}"
+                                class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 transition">
+                                View Business
+                            </a>
+
                             @auth
                                 @if(auth()->user()->role === 'admin')
                                     <a href="{{ route('surplus-listing.edit', $surplus_listing) }}"

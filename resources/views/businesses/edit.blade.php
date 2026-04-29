@@ -39,7 +39,7 @@
 
                     <div class="border-t border-slate-100 pt-6">
                         <x-business-form :action="route('business.update', $business)"
-                            :method="'PUT'" :business="$business" :businesses="$businesses" />
+                            :method="'PUT'" :business="$business" />
                     </div>
                 </div>
             </div>

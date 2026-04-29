@@ -28,7 +28,7 @@ class BusinessController extends Controller
 
 
         // Send the businesses to the index view
-        return view('business.index', compact('businesses'));
+        return view('businesses.index', compact('businesses'));
     }
 
     /**
@@ -38,7 +38,7 @@ class BusinessController extends Controller
     {
         $businesses = Business::all();
 
-        return view('business.create');
+        return view('businesses.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class BusinessController extends Controller
             'address' => 'required',
             'city' => 'required',
             'eircode' => 'required',
-            'email' => 'required',
+            'email' => 'nullable|email',
             'description' => 'required',
             'opening_hours' => 'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -67,8 +67,8 @@ class BusinessController extends Controller
 
         // Create a new business record in the database
         Business::create([
-            'business_name' => $request->name,
-            'business_type' => $request->type,
+            'business_name' => $request->business_name,
+            'business_type' => $request->business_type,
             'address' => $request->address,
             'city' => $request->city,
             'eircode' => $request->eircode,
@@ -80,7 +80,7 @@ class BusinessController extends Controller
         ]);
 
         // Redirect to the index page with a success message
-        return to_route('business.index')->with('success', 'Business created successfully!');
+        return to_route('businesses.index')->with('success', 'Business created successfully!');
     }
 
     /**
@@ -120,7 +120,7 @@ class BusinessController extends Controller
             'address' => 'required',
             'city' => 'required',
             'eircode' => 'required',
-            'email' => 'required',
+            'email' => 'nullable|email',
             'description' => 'required',
             'opening_hours' => 'required',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
@@ -134,8 +134,8 @@ class BusinessController extends Controller
 
         // Create a record in the database
         $business->update([
-            'business_name' => $request->name,
-            'business_type' => $request->type,
+            'business_name' => $request->business_name,
+            'business_type' => $request->business_type,
             'address' => $request->address,
             'city' => $request->city,
             'eircode' => $request->eircode,

@@ -19,6 +19,9 @@
                         :active="request()->routeIs('surplus-listing.index')">
                         {{ __('Surplus Listings') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('business.index')" :active="request()->routeIs('business.index')">
+                        {{ __('Businesses') }}
+                    </x-nav-link>
                 </div>
             </div>
 

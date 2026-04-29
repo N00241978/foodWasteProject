@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use File;
 
 class BusinessFactory extends Factory
 {
@@ -11,6 +12,8 @@ class BusinessFactory extends Factory
     {
         $owner = User::where('role', 'business')->inRandomOrder()->first()
             ?? User::factory()->create(['role' => 'business']);
+
+        $image = $this->faker->randomElement(File::files(public_path('images\businesses')))->getFilename();
 
         return [
             'user_id' => $owner->id,
@@ -46,6 +49,7 @@ class BusinessFactory extends Factory
                 . ':00',
 
             'verified' => $this->faker->boolean(70),
+            'image' => $image,
         ];
     }
 }

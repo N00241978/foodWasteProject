@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('address');
             $table->string('city');
             $table->string('eircode')->nullable();
+            $table->string('email')->nullable();
 
             $table->string('description')->nullable();
             $table->string('opening_hours')->nullable();
