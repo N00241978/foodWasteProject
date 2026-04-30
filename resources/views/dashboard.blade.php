@@ -15,7 +15,7 @@
                         Welcome back!
                     </h1>
                     <p class="mt-2 text-slate-600">
-                        Browse featured businesses and available surplus listings.
+                        Browse the top shops selling yuor favourite food at a discounted price, while helping to reduce food waste!.
                     </p>
                 </div>
             </div>
@@ -24,10 +24,10 @@
                 <div class="flex items-center justify-between mb-5">
                     <div>
                         <h2 class="text-2xl font-bold text-slate-900">
-                            Local Surplus Map
+                            Local Shops with listings
                         </h2>
                         <p class="text-sm text-slate-600">
-                            Prototype map showing nearby surplus pickup spots.
+                            Use our map to find discounted food nearby!
                         </p>
                     </div>
                 </div>
@@ -94,10 +94,10 @@
                 <div class="flex items-center justify-between mb-5">
                     <div>
                         <h2 class="text-2xl font-bold text-slate-900">
-                            Featured Businesses
+                            Featured Businesses 
                         </h2>
                         <p class="text-sm text-slate-600">
-                            A quick look at local businesses.
+                            A quick look at local businesses with discounted lsitings.
                         </p>
                     </div>
 
