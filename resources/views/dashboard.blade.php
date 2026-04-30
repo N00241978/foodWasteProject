@@ -19,7 +19,76 @@
                     </p>
                 </div>
             </div>
+            {{-- Prototype Map --}}
+            <div>
+                <div class="flex items-center justify-between mb-5">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">
+                            Local Surplus Map
+                        </h2>
+                        <p class="text-sm text-slate-600">
+                            Prototype map showing nearby surplus pickup spots.
+                        </p>
+                    </div>
+                </div>
 
+                <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+                    <div id="map" class="w-full h-[450px]"></div>
+                </div>
+            </div>
+
+            {{-- Leaflet CSS --}}
+            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+            {{-- Leaflet JS --}}
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const map = L.map('map').setView([53.3498, -6.2603], 13);
+
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '&copy; OpenStreetMap contributors'
+                    }).addTo(map);
+
+                    const spots = [
+                        {
+                            name: 'Fresh Basket Café',
+                            description: 'Surplus sandwiches and pastries available.',
+                            lat: 53.3498,
+                            lng: -6.2603
+                        },
+                        {
+                            name: 'Green Corner Market',
+                            description: 'Discounted fruit and veg pickup spot.',
+                            lat: 53.3440,
+                            lng: -6.2672
+                        },
+                        {
+                            name: 'Daily Loaf Bakery',
+                            description: 'End-of-day bread and baked goods.',
+                            lat: 53.3535,
+                            lng: -6.2480
+                        },
+                        {
+                            name: 'Urban Eats',
+                            description: 'Prepared meals available for collection.',
+                            lat: 53.3471,
+                            lng: -6.2550
+                        }
+                    ];
+
+                    spots.forEach(spot => {
+                        L.marker([spot.lat, spot.lng])
+                            .addTo(map)
+                            .bindPopup(`
+                                <strong>${spot.name}</strong><br>
+                                ${spot.description}
+                            `);
+                    });
+                });
+            </script>
             {{-- Businesses --}}
             <div>
                 <div class="flex items-center justify-between mb-5">

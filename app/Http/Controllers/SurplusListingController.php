@@ -181,6 +181,6 @@ class SurplusListingController extends Controller
         $cart->surplusListings()->save($surplus_listing);
 
 
-        return to_route('surplus-listing.index')->with('success', 'Surplus listing added to cart successfully!');
+        return to_route('carts.show', $cart)->with('success', 'Surplus listing added to cart successfully!');
     }
 }

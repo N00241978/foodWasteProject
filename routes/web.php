@@ -39,7 +39,7 @@ require __DIR__ . '/auth.php';
 
 Route::resource('business', BusinessController::class)->middleware('auth');
 Route::resource('donation', DonationController::class)->middleware('auth');
-Route::resource('order', CartController::class)->middleware('auth');
+Route::get('/carts', [CartController::class, 'show'])->name('carts.show');
 Route::resource('payment', PaymentController::class)->middleware('auth');
 Route::resource('review', ReviewController::class)->middleware('auth');
 Route::resource('surplus-listing', SurplusListingController::class)->middleware('auth');
